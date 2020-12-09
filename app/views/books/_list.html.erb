@@ -1,7 +1,7 @@
 <h1>User info</h1>
     <p>user画像 <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-    <p>name <%= user.name %></p>
-    <p>introduction <%= user.introduction %></p>
+    <p>name <%= user.name if user %></p>
+    <p>introduction <%= user.introduction if user %></p>
 </div>
 
 <%= link_to "edit", edit_user_path(user) %>
