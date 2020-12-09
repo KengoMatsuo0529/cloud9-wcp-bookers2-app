@@ -1,3 +1,10 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <h1>Books</h1>
 
  <% @books.each do |book| %>
@@ -14,12 +21,14 @@
 <%= @users.each do |user| %>
 
 <div>
-<p>user画像 <%= image_tag ('sample-author1.jpg') %></p>
+<p>user画像 <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
 <p>name <%= user.name %></p>
 <p>introduction <%= user.introduction %></p>
 </div>
 
 <% end %>
+
+<%= link_to "edit", edit_user_path(@users) %>
 
 <h1>New Book</h1>
 
