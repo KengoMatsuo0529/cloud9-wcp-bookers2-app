@@ -8,16 +8,19 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     @book.user_id = current_user.id
-    if @book.save
+    if @book.save!
     redirect_to books_path
     else
+      @books = Book.all
+      @users = User.all
     render :index
     end
   end
 
   def index
     @books = Book.all
-    @users = User.all
+    @user = current_user
+    @book = Book.new
   end
 
   def show
@@ -38,7 +41,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.permit(:title, :body, :user_id)
+    params.require(:book).permit(:title, :body, :user_id)
   end
 
 end
