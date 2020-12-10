@@ -1,9 +1,29 @@
-<h1>Book detail</h1>
 
-</div>
-  <p>Title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.body %></p>
-</div>
+<div class="row">
 
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Destroy", book_path, method: :delete %>
+<%= render 'books/list', user: @user, book: @book %>
+
+<div class="col-md-8 offset-md-1">
+<h2>Book detail</h2>
+<table class="table table-hover table-inverse">
+
+  <tbody>
+        <tr>
+        <td><img class="attachment user profile_image fallback"><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no-img.png", size:"40x40" %></img>
+          <p><%= link_to user_path do %></p>
+            <p><%= @user.name %></p>
+            </td>
+          <% end %>
+          <td><%= link_to book_path(@show_book.id) do %>
+            <p><%= @show_book.title %></p></td>
+          <% end %>  
+      <td><p><%= @show_book.body %></p></td>
+      <% if @user.id == current_user.id %>
+      <td><%= link_to "Edit", edit_book_path %></td>
+      <td><%= link_to "Destroy", books_path %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
