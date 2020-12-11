@@ -17,6 +17,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-.top-title {
-  font-weight: bold;
+
+.error {
+    color: red;
+}
+
+.notice {
+  color: green;
 }

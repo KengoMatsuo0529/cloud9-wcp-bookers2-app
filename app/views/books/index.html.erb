@@ -1,9 +1,12 @@
-<% if @book.errors.any? %>
+<p class="error"><% if @book.errors.any? %>
   <%= @book.errors.count %>error prohibited this obj from being saved:
   <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
+    <%= message %></p>
   <% end %>
 <% end %>
+
+<p id="notice">
+ <%=  notice %></p>
 
 <div class="row">
 

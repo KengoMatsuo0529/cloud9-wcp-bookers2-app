@@ -1,3 +1,5 @@
+<p id="notice">
+ <%=  notice %></p>
 
 <div class="row">
 
@@ -18,10 +20,12 @@
             <p><%= @show_book.title %></p></td>
           <% end %>  
       <td><p><%= @show_book.body %></p></td>
+      
       <% if @user.id == current_user.id %>
-      <td><%= link_to "Edit", edit_book_path %></td>
-      <td><%= link_to "Destroy", books_path %></td>
+      <td><%= link_to "Edit", edit_book_path, class: "btn btn-info btn-sm btm-block mb-3" %></td>
+      <td><%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger btn-sm btm-block mb-3", "data-confirm" => "本当に削除しますか？" %></td>
       <% end %>
+    
     </tr>
   </tbody>
 </table>
